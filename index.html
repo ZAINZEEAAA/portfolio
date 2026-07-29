@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zain Zeeshan — Dev Portfolio</title>
+<meta name="description" content="Projects and repositories by ZAINZEEAAA, pulled live from GitHub.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#0D0B1A;
+    --bg-panel:#151229;
+    --bg-panel-hover:#1B1836;
+    --line:#2A2650;
+    --text-primary:#F4F2FF;
+    --text-muted:#9C96C2;
+    --text-dim:#615C8A;
+    --accent-violet:#8B5CF6;
+    --accent-cyan:#22D3EE;
+    --accent-coral:#FB7185;
+    --accent-amber:#FBBF24;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg-deep);
+    color:var(--text-primary);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    background-image:
+      radial-gradient(ellipse 800px 500px at 15% -10%, rgba(139,92,246,0.16), transparent),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(34,211,238,0.10), transparent);
+    background-attachment:fixed;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+
+  /* NAV */
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:28px 0;
+  }
+  .logo{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:0.02em;
+    color:var(--text-primary);
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo .dot{width:8px; height:8px; border-radius:50%; background:var(--accent-coral); box-shadow:0 0 12px var(--accent-coral); flex-shrink:0;}
+  .nav-link{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--text-muted);
+    text-decoration:none;
+    border:1px solid var(--line);
+    padding:8px 16px;
+    border-radius:100px;
+    transition:all 0.2s ease;
+    display:flex; align-items:center; gap:6px;
+  }
+  .nav-link:hover{color:var(--text-primary); border-color:var(--accent-violet); background:rgba(139,92,246,0.08);}
+
+  /* HERO */
+  .hero{padding:56px 0 40px; border-bottom:1px solid var(--line);}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--accent-cyan);
+    margin-bottom:20px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:'>'; color:var(--accent-violet);}
+  .cursor-blink{
+    display:inline-block; width:8px; height:16px; background:var(--accent-cyan);
+    animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{50%{opacity:0;}}
+
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:clamp(34px, 6vw, 58px);
+    line-height:1.08;
+    letter-spacing:-0.02em;
+    max-width:760px;
+  }
+  h1 .grad{
+    background:linear-gradient(100deg, var(--accent-violet), var(--accent-cyan) 60%, var(--accent-coral));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  .hero-sub{
+    color:var(--text-muted);
+    font-size:17px;
+    max-width:520px;
+    margin-top:20px;
+  }
+
+  .hero-bottom{
+    display:flex; align-items:flex-end; justify-content:space-between; gap:32px;
+    margin-top:44px; flex-wrap:wrap;
+  }
+
+  .stats-row{display:flex; gap:0; flex-wrap:wrap;}
+  .stat{
+    padding:0 28px 0 0; margin-right:28px; border-right:1px solid var(--line);
+  }
+  .stat:last-child{border-right:none;}
+  .stat-num{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    font-size:28px;
+    color:var(--text-primary);
+  }
+  .stat-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-top:2px;
+  }
+
+  .profile-chip{
+    display:flex; align-items:center; gap:12px;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    padding:10px 18px 10px 10px;
+    border-radius:100px;
+  }
+  .profile-chip img{width:38px; height:38px; border-radius:50%; display:block;}
+  .profile-chip .name{font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:14px;}
+  .profile-chip .handle{font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--text-dim);}
+
+  /* SECTION HEADER */
+  .section{padding:56px 0;}
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:28px; flex-wrap:wrap; gap:10px;
+  }
+  .section-title{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:24px;
+  }
+  .section-note{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--text-dim);
+  }
+
+  /* REPO GRID */
+  .repo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+    gap:16px;
+  }
+  .repo-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-left:3px solid var(--lang-color, var(--accent-violet));
+    border-radius:10px;
+    padding:20px;
+    text-decoration:none;
+    color:inherit;
+    display:flex; flex-direction:column; gap:10px;
+    transition:transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    min-height:150px;
+  }
+  .repo-card:hover{
+    transform:translateY(-3px);
+    background:var(--bg-panel-hover);
+    border-color:var(--lang-color, var(--accent-violet));
+  }
+  .repo-top{display:flex; align-items:flex-start; justify-content:space-between; gap:10px;}
+  .repo-name{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    font-size:15px;
+    color:var(--text-primary);
+    word-break:break-word;
+  }
+  .repo-desc{color:var(--text-muted); font-size:13.5px; flex-grow:1;}
+  .repo-meta{display:flex; align-items:center; gap:14px; font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--text-dim); flex-wrap:wrap;}
+  .repo-meta span{display:flex; align-items:center; gap:5px;}
+  .lang-dot{width:8px; height:8px; border-radius:50%; background:var(--lang-color, var(--text-dim)); flex-shrink:0;}
+  .fork-badge{
+    font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--text-dim);
+    border:1px solid var(--line); padding:2px 8px; border-radius:100px;
+  }
+
+  /* STATES */
+  .state-box{
+    text-align:center; padding:60px 20px; color:var(--text-muted);
+    font-family:'JetBrains Mono', monospace; font-size:13px;
+  }
+  .state-box .big{font-family:'Space Grotesk', sans-serif; font-size:18px; color:var(--text-primary); margin-bottom:8px; font-weight:600;}
+
+  /* FOOTER */
+  footer{
+    border-top:1px solid var(--line);
+    padding:48px 0 40px;
+    text-align:center;
+  }
+  .footer-cta{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:22px;
+    margin-bottom:18px;
+  }
+  .gh-button{
+    display:inline-flex; align-items:center; gap:10px;
+    background:linear-gradient(100deg, var(--accent-violet), var(--accent-cyan));
+    color:#0D0B1A;
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    font-size:14px;
+    padding:12px 24px;
+    border-radius:100px;
+    text-decoration:none;
+    transition:transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .gh-button:hover{transform:translateY(-2px); box-shadow:0 8px 24px rgba(139,92,246,0.35);}
+  .footer-note{margin-top:20px; color:var(--text-dim); font-size:12px; font-family:'JetBrains Mono', monospace;}
+
+  @media (max-width:560px){
+    .hero-bottom{flex-direction:column; align-items:flex-start;}
+    .stat{margin-right:20px; padding-right:20px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="logo"><span class="dot"></span>zainzeeaaa<span style="color:var(--text-dim)">.dev</span></div>
+    <a class="nav-link" href="https://github.com/ZAINZEEAAA" target="_blank" rel="noopener">
+      GitHub ↗
+    </a>
+  </nav>
+
+  <section class="hero">
+    <div class="eyebrow">git log --author="Zain"<span class="cursor-blink"></span></div>
+    <h1>Learning Python, one <span class="grad">commit</span> at a time.</h1>
+    <p class="hero-sub">Data, OOP, and small tools built while working through coursework — pulled live from my GitHub, no copy-paste required.</p>
+
+    <div class="hero-bottom">
+      <div class="stats-row" id="statsRow">
+        <div class="stat"><div class="stat-num">—</div><div class="stat-label">Repos</div></div>
+        <div class="stat"><div class="stat-num">—</div><div class="stat-label">Stars</div></div>
+        <div class="stat"><div class="stat-num">—</div><div class="stat-label">Followers</div></div>
+      </div>
+      <div class="profile-chip" id="profileChip">
+        <img id="avatarImg" src="" alt="" style="display:none;">
+        <div>
+          <div class="name" id="profileName">Zain</div>
+          <div class="handle">@ZAINZEEAAA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="section-title">Repositories</div>
+      <div class="section-note" id="sectionNote">sorted by last updated</div>
+    </div>
+    <div id="repoContainer">
+      <div class="state-box">
+        <div class="big">Fetching repos…</div>
+        talking to api.github.com
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-cta">Want to see more, or hire for a project?</div>
+    <a class="gh-button" href="https://github.com/ZAINZEEAAA" target="_blank" rel="noopener">
+      Visit GitHub Profile →
+    </a>
+    <div class="footer-note">Built with HTML/CSS/JS · deployed on Netlify · data live from GitHub API</div>
+  </footer>
+</div>
+
+<script>
+const USERNAME = "ZAINZEEAAA";
+
+const LANG_COLORS = {
+  "JavaScript":"#f1e05a","TypeScript":"#3178c6","Python":"#3572A5","Java":"#b07219",
+  "HTML":"#e34c26","CSS":"#563d7c","C++":"#f34b7d","C":"#555555","C#":"#178600",
+  "Jupyter Notebook":"#DA5B0B","Shell":"#89e051","Go":"#00ADD8","Ruby":"#701516",
+  "PHP":"#4F5D95","Swift":"#F05138","Kotlin":"#A97BFF","Rust":"#dea584",
+  "Dart":"#00B4AB","Vue":"#41b883","R":"#198CE7","Jupyter":"#DA5B0B"
+};
+
+function langColor(lang){
+  return LANG_COLORS[lang] || "#8B5CF6";
+}
+
+function timeAgo(dateStr){
+  const diff = Date.now() - new Date(dateStr).getTime();
+  const days = Math.floor(diff / 86400000);
+  if(days < 1) return "today";
+  if(days === 1) return "1 day ago";
+  if(days < 30) return days + " days ago";
+  const months = Math.floor(days/30);
+  if(months < 12) return months + (months===1 ? " month ago" : " months ago");
+  const years = Math.floor(months/12);
+  return years + (years===1 ? " year ago" : " years ago");
+}
+
+async function loadProfile(){
+  try{
+    const res = await fetch(`https://api.github.com/users/${USERNAME}`);
+    if(!res.ok) throw new Error("profile fetch failed");
+    const data = await res.json();
+
+    document.getElementById('profileName').textContent = data.name || data.login;
+    if(data.avatar_url){
+      const img = document.getElementById('avatarImg');
+      img.src = data.avatar_url;
+      img.alt = data.login;
+      img.style.display = 'block';
+    }
+
+    const statsRow = document.getElementById('statsRow');
+    statsRow.children[0].querySelector('.stat-num').textContent = data.public_repos ?? '—';
+    statsRow.children[2].querySelector('.stat-num').textContent = data.followers ?? '—';
+
+    return data;
+  }catch(e){
+    console.error(e);
+    return null;
+  }
+}
+
+async function loadRepos(){
+  const container = document.getElementById('repoContainer');
+  try{
+    const res = await fetch(`https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=updated`);
+    if(!res.ok) throw new Error("repos fetch failed");
+    let repos = await res.json();
+
+    repos = repos.filter(r => !r.fork);
+
+    if(repos.length === 0){
+      container.innerHTML = `<div class="state-box"><div class="big">No public repos yet</div>Once something's pushed to GitHub, it'll show up here automatically.</div>`;
+      return;
+    }
+
+    const totalStars = repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0);
+    const statsRow = document.getElementById('statsRow');
+    statsRow.children[1].querySelector('.stat-num').textContent = totalStars;
+
+    repos.sort((a,b) => new Date(b.updated_at) - new Date(a.updated_at));
+
+    const grid = document.createElement('div');
+    grid.className = 'repo-grid';
+
+    repos.forEach(repo => {
+      const card = document.createElement('a');
+      card.href = repo.html_url;
+      card.target = '_blank';
+      card.rel = 'noopener';
+      card.className = 'repo-card';
+      if(repo.language){
+        card.style.setProperty('--lang-color', langColor(repo.language));
+      }
+
+      card.innerHTML = `
+        <div class="repo-top">
+          <div class="repo-name">${repo.name}</div>
+          ${repo.fork ? '<span class="fork-badge">fork</span>' : ''}
+        </div>
+        <div class="repo-desc">${repo.description ? repo.description : 'No description provided.'}</div>
+        <div class="repo-meta">
+          ${repo.language ? `<span><span class="lang-dot"></span>${repo.language}</span>` : ''}
+          <span>★ ${repo.stargazers_count}</span>
+          <span>⑂ ${repo.forks_count}</span>
+          <span>updated ${timeAgo(repo.updated_at)}</span>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    container.innerHTML = '';
+    container.appendChild(grid);
+
+  }catch(e){
+    console.error(e);
+    container.innerHTML = `<div class="state-box"><div class="big">Couldn't reach GitHub right now</div>This can happen if the API rate limit was hit. Refresh in a bit, or visit the profile link above.</div>`;
+  }
+}
+
+loadProfile();
+loadRepos();
+</script>
+
+</body>
+</html>
